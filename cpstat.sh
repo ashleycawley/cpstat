@@ -1,27 +1,36 @@
 #!/bin/bash
 
+# This bash script is a demo of a function library that I am building
+# to be able to easily obtain statstics and information about cPanel
+# accounts which I will then no doubt make use of in future tools.
+
 function ESLEEP {
 echo && sleep 1
 }
 
+# Prints Home Directory
 function HOMEDIR {
 echo -e $(cat /home/$CPUSER/.cpanel/nvdata/defaultdir)
 }
 
+# Prints the number of email accounts
 function NUMEMAIL {
 cp /home/$CPUSER/.cpanel/email_accounts_count /home/$CPUSER/.cpanel/email_accounts_count_readout
 echo -e $(cat /home/$CPUSER/.cpanel/email_accounts_count_readout)
 rm -f /home/$CPUSER/.cpanel/email_accounts_count_readout
 }
 
+# Prints SSL Keys, Private, Public and more
 function SSLKEYS {
 echo -e $(cat /home/$CPUSER/.cpanel/nvdata/letsencrypt-cpanel)
 }
 
+# Prints the number of MySQL databases
 function NUMDB {
 echo -e $(cat /home/$CPUSER/.cpanel/datastore/mysql-db-count)
 }
 
+# Prints the SSH Port
 function SSHPORT {
 echo -e $(cat /home/$CPUSER/.cpanel/datastore/ports_GETSSHPORT)
 }
