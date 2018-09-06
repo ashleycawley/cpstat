@@ -15,9 +15,7 @@ echo -e $(cat /home/$CPUSER/.cpanel/nvdata/defaultdir)
 
 # Prints the number of email accounts
 function NUMEMAIL {
-cp /home/$CPUSER/.cpanel/email_accounts_count /home/$CPUSER/.cpanel/email_accounts_count_readout
-echo -e $(cat /home/$CPUSER/.cpanel/email_accounts_count_readout)
-rm -f /home/$CPUSER/.cpanel/email_accounts_count_readout
+echo -e $(cat /home/$CPUSER/.cpanel/email_accounts_count 2>/dev/null)
 }
 
 # Prints SSL Keys, Private, Public and more
