@@ -33,6 +33,12 @@ function SSHPORT {
 echo -e $(cat /home/$CPUSER/.cpanel/datastore/ports_GETSSHPORT)
 }
 
+# Prints All Server IP's
+function ALLSVRIPS {
+IPS=$(sed 's/\"//g' /home/$CPUSER/.cpanel/datastore/all_iplist.db | sed 's/[][]//g')
+echo -e "$IPS"
+}
+
 # Script
 
 echo && read -p "User: " CPUSER
@@ -46,6 +52,8 @@ echo -e "Email Accounts: \c" && NUMEMAIL && ESLEEP
 echo -e "MySQL Databases: \c" && NUMDB && ESLEEP
 
 echo -e "SSH Port: \c" && SSHPORT && ESLEEP
+
+echo -e "All Server IP's: \c" && ALLSVRIPS && ESLEEP
 
 read -p "Press [Enter] to see the SSL Private Key, Certificate and more..."
 echo
