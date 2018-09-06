@@ -44,6 +44,10 @@ function CPUSRCONTACTADDRESS {
 grep "@" /home/$CPUSER/.cpanel/contactinfo | sed s/\"email\":[[:space:]]//g | sed s/\'//g
 }
 
+# Prints database information extracted from Installatron directories
+function INSTALLATRONDBINFO {
+grep -ri "db-" /home/$CPUSER/.appdata/current/ 2>/dev/null | grep -v prefix | grep -v "db-host" | grep -v "db-type"
+}
 
 # Script
 
@@ -62,6 +66,11 @@ echo -e "SSH Port: \c" && SSHPORT && ESLEEP
 echo -e "All Server IP's: \c" && ALLSVRIPS && ESLEEP
 
 echo -e "cP User Contact Email: \c" && CPUSRCONTACTADDRESS && ESLEEP
+
+echo "Database details extracted from Installatron:"
+read -p "Press [Enter] to display..." && echo
+INSTALLATRONDBINFO
+echo
 
 read -p "Press [Enter] to see the SSL Private Key, Certificate and more..."
 echo
