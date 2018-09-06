@@ -39,6 +39,12 @@ IPS=$(sed 's/\"//g' /home/$CPUSER/.cpanel/datastore/all_iplist.db | sed 's/[][]/
 echo -e "$IPS"
 }
 
+# Prints cPanel user's contact email address
+function CPUSRCONTACTADDRESS {
+grep "@" /home/$CPUSER/.cpanel/contactinfo | sed s/\"email\":[[:space:]]//g | sed s/\'//g
+}
+
+
 # Script
 
 echo && read -p "User: " CPUSER
@@ -54,6 +60,8 @@ echo -e "MySQL Databases: \c" && NUMDB && ESLEEP
 echo -e "SSH Port: \c" && SSHPORT && ESLEEP
 
 echo -e "All Server IP's: \c" && ALLSVRIPS && ESLEEP
+
+echo -e "cP User Contact Email: \c" && CPUSRCONTACTADDRESS && ESLEEP
 
 read -p "Press [Enter] to see the SSL Private Key, Certificate and more..."
 echo
