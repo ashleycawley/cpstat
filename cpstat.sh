@@ -41,17 +41,13 @@ echo && read -p "User: " CPUSER
 
 echo && echo "Scanning..." && ESLEEP
 
-echo -e "Home Directory: \c"
-HOMEDIR && ESLEEP
+echo -e "Home Directory: \c" && HOMEDIR && ESLEEP
 
-echo -e "Email Accounts: \c"
-NUMEMAIL && ESLEEP
+echo -e "Email Accounts: \c" && NUMEMAIL && ESLEEP
 
-echo -e "MySQL Databases: \c"
-NUMDB && ESLEEP
+echo -e "MySQL Databases: \c" && NUMDB && ESLEEP
 
-echo -e "SSH Port: \c"
-SSHPORT && ESLEEP
+echo -e "SSH Port: \c" && SSHPORT && ESLEEP
 
 read -p "Press [Enter] to see the SSL Private Key, Certificate and more..."
 echo
