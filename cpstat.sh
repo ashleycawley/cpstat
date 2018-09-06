@@ -49,6 +49,12 @@ function INSTALLATRONDBINFO {
 grep -ri "db-" /home/$CPUSER/.appdata/current/ 2>/dev/null | grep -v prefix | grep -v "db-host" | grep -v "db-type"
 }
 
+# Prints last user login information
+function LASTCPLOGINS {
+cat /home/$CPUSER/.lastlogin
+echo
+}
+
 # Script
 
 echo && read -p "User: " CPUSER
@@ -70,6 +76,11 @@ echo -e "cP User Contact Email: \c" && CPUSRCONTACTADDRESS && ESLEEP
 echo "Database details extracted from Installatron:"
 read -p "Press [Enter] to display..." && echo
 INSTALLATRONDBINFO
+echo
+
+echo "Last cPanel Login Information:"
+read -p "Press [Enter] to display..." && echo
+LASTCPLOGINS
 echo
 
 read -p "Press [Enter] to see the SSL Private Key, Certificate and more..."
