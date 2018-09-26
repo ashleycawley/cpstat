@@ -10,7 +10,7 @@ echo && sleep 1
 
 # Prints Home Directory
 function HOMEDIR {
-echo -e $(cat /home/$CPUSER/.cpanel/nvdata/defaultdir)
+echo -e $(cat /home/$CPUSER/.cpanel/nvdata/defaultdir 2>/dev/null)
 }
 
 # Prints the number of email accounts
@@ -20,38 +20,38 @@ echo -e $(cat /home/$CPUSER/.cpanel/email_accounts_count 2>/dev/null)
 
 # Prints SSL Keys, Private, Public and more
 function SSLKEYS {
-echo -e $(cat /home/$CPUSER/.cpanel/nvdata/letsencrypt-cpanel)
+echo -e $(cat /home/$CPUSER/.cpanel/nvdata/letsencrypt-cpanel 2>/dev/null)
 }
 
 # Prints the number of MySQL databases
 function NUMDB {
-echo -e $(cat /home/$CPUSER/.cpanel/datastore/mysql-db-count)
+echo -e $(cat /home/$CPUSER/.cpanel/datastore/mysql-db-count 2>/dev/null)
 }
 
 # Prints the SSH Port
 function SSHPORT {
-echo -e $(cat /home/$CPUSER/.cpanel/datastore/ports_GETSSHPORT)
+echo -e $(cat /home/$CPUSER/.cpanel/datastore/ports_GETSSHPORT 2>/dev/null)
 }
 
 # Prints All Server IP's
 function ALLSVRIPS {
-IPS=$(sed 's/\"//g' /home/$CPUSER/.cpanel/datastore/all_iplist.db | sed 's/[][]//g')
+IPS=$(sed 's/\"//g' /home/$CPUSER/.cpanel/datastore/all_iplist.db | sed 's/[][]//g' 2>/dev/null)
 echo -e "$IPS"
 }
 
 # Prints cPanel user's contact email address
 function CPUSRCONTACTADDRESS {
-grep "@" /home/$CPUSER/.cpanel/contactinfo | sed s/\"email\":[[:space:]]//g | sed s/\'//g
+grep "@" /home/$CPUSER/.cpanel/contactinfo | sed s/\"email\":[[:space:]]//g | sed s/\'//g 2>/dev/null
 }
 
 # Prints database information extracted from Installatron directories
 function INSTALLATRONDBINFO {
-grep -ri "db-" /home/$CPUSER/.appdata/current/ 2>/dev/null | grep -v prefix | grep -v "db-host" | grep -v "db-type"
+grep -ri "db-" /home/$CPUSER/.appdata/current/ 2>/dev/null | grep -v prefix | grep -v "db-host" | grep -v "db-type" 2>/dev/null
 }
 
 # Prints last user login information
 function LASTCPLOGINS {
-cat /home/$CPUSER/.lastlogin
+cat /home/$CPUSER/.lastlogin 2>/dev/null
 echo
 }
 
